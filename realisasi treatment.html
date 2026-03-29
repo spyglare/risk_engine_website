@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Realisasi Treatment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<!-- Arrow Button -->
+<a href="rencana penanganan.html"
+   class="fixed right-6 top-1/2 -translate-y-1/2
+          bg-blue-700 hover:bg-blue-800
+          text-white text-2xl
+          w-12 h-12 flex items-center justify-center
+          rounded-full shadow-lg transition">
+
+  →
+</a>
+
+<body class="bg-gray-100">
+
+<div class="flex min-h-screen">
+
+  <!-- Sidebar -->
+  <div class="w-64 bg-blue-800 text-white flex flex-col p-6 space-y-6">
+
+    <a href="monitoring.html" class="hover:underline">Return</a>
+    <a href="realisasi treatment.html" class="font-semibold underline">Realisasi Treatment</a>
+    <a href="kinerja kpi.html" class="hover:underline">Kinerja KPI</a>
+    <a href="status risiko.html" class="hover:underline">Status Risiko</a>
+    <a href="peta risiko ongoing.html" class="hover:underline">Peta Risiko Ongoing</a>
+    <a href="status penanganan.html" class="hover:underline">Status Penanganan</a>
+
+  </div>
+
+  <!-- Content -->
+  <div class="flex-1 p-6">
+
+    <!-- Header -->
+    <div class="mb-4">
+      <h2 class="text-blue-700 font-semibold">
+        PT BIO FARMA (Persero) TBK
+      </h2>
+
+      <h1 class="text-lg font-bold text-blue-900">
+        REALISASI TREATMENT
+      </h1>
+
+      <div class="flex flex-wrap gap-6 text-sm mt-2">
+        <p>Bagian Pemasaran</p>
+        <p>2026</p>
+        <p>1 Jan s/d 31 Des</p>
+      </div>
+
+      <div class="flex items-center gap-4 mt-3 text-sm">
+        <span>Waktu Saat Ini ke :</span>
+        <span class="bg-gray-200 px-3 py-1 rounded font-semibold">10</span>
+
+        <span class="ml-10">Satuan Waktu :</span>
+        <span class="bg-gray-200 px-3 py-1 rounded font-semibold">Minggu</span>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto border border-green-500">
+
+      <table class="w-full text-xs border-collapse">
+
+        <!-- HEADER -->
+        <thead class="bg-gray-200 text-center">
+
+          <tr>
+            <th rowspan="2" class="border p-2">NO.</th>
+            <th rowspan="2" class="border p-2">NO. RISIKO</th>
+            <th rowspan="2" class="border p-2">PENANGANAN RISIKO</th>
+
+            <th colspan="2" class="border p-2">RENCANA</th>
+
+            <th rowspan="2" class="border p-2">PENANGGUNG JAWAB</th>
+            <th rowspan="2" class="border p-2">BIAYA PENANGANAN</th>
+
+            <th colspan="2" class="border p-2">REALISASI</th>
+            <th rowspan="2" class="border p-2">% YANG SELESAI</th>
+          </tr>
+
+          <tr>
+            <th class="border p-2">DIMULAI</th>
+            <th class="border p-2">DURASI</th>
+
+            <th class="border p-2">DIMULAI</th>
+            <th class="border p-2">DURASI</th>
+          </tr>
+
+        </thead>
+
+        <!-- BODY -->
+        <tbody class="bg-white">
+
+          <!-- Row 1 -->
+          <tr>
+            <td class="border p-2 text-center">1</td>
+            <td class="border p-2 text-center">101001</td>
+
+            <td class="border p-2">
+              Memperbaiki <b>ATURAN</b> tentang pengembangan produk dan survey pasar.<br>
+              Diversifikasi pasar dengan menjual di beberapa lokasi.
+            </td>
+
+            <!-- RENCANA -->
+            <td class="border p-2 text-center">
+              <input type="number" value="2" class="w-14 border rounded text-center">
+            </td>
+            <td class="border p-2 text-center">
+              <input type="number" value="1" class="w-14 border rounded text-center">
+            </td>
+
+            <!-- PENANGGUNG JAWAB -->
+            <td class="border p-2 text-center">
+              <input type="text" value="Ms. A"
+                class="w-24 text-center bg-blue-100 text-blue-800 rounded px-2 py-1 text-xs font-semibold">
+            </td>
+
+            <!-- BIAYA -->
+            <td class="border p-2 text-right">Rp10,000,000</td>
+
+            <!-- REALISASI -->
+            <td class="border p-2 text-center">
+              <input type="number" class="w-14 border rounded text-center">
+            </td>
+            <td class="border p-2 text-center">
+              <input type="number" class="w-14 border rounded text-center">
+            </td>
+
+            <!-- % -->
+            <td class="border p-2 text-center">
+              <input type="number" placeholder="%"
+                class="w-16 border rounded text-center">
+            </td>
+          </tr>
+
+          <!-- Row 2 -->
+          <tr>
+            <td class="border p-2 text-center">2</td>
+            <td class="border p-2 text-center">301002</td>
+
+            <td class="border p-2">
+              Memperbaiki <b>PROSEDUR</b> tentang mengikuti pameran.
+            </td>
+
+            <!-- RENCANA -->
+            <td class="border p-2 text-center">
+              <input type="number" value="6" class="w-14 border rounded text-center">
+            </td>
+            <td class="border p-2 text-center">
+              <input type="number" value="1" class="w-14 border rounded text-center">
+            </td>
+
+            <!-- PENANGGUNG JAWAB -->
+            <td class="border p-2 text-center">
+              <input type="text" value="Mr. B"
+                class="w-24 text-center bg-green-100 text-green-800 rounded px-2 py-1 text-xs font-semibold">
+            </td>
+
+            <!-- BIAYA -->
+            <td class="border p-2 text-right">Rp5,000,000</td>
+
+            <!-- REALISASI -->
+            <td class="border p-2 text-center">
+              <input type="number" class="w-14 border rounded text-center">
+            </td>
+            <td class="border p-2 text-center">
+              <input type="number" class="w-14 border rounded text-center">
+            </td>
+
+            <!-- % -->
+            <td class="border p-2 text-center">
+              <input type="number" placeholder="%"
+                class="w-16 border rounded text-center">
+            </td>
+          </tr>
+
+          <!-- Empty rows -->
+          <tr class="h-12">
+            <td class="border"></td>
+            <td class="border"></td>
+            <td class="border"></td>
+            <td class="border"></td>
+            <td class="border"></td>
+            <td class="border"></td>
+            <td class="border"></td>
+            <td class="border"></td>
+            <td class="border"></td>
+            <td class="border"></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+
+  <!-- CONTAINER -->
+  <div class="w-full max-w-md bg-white rounded shadow-md p-8">
+
+    <!-- HEADER -->
+    <div class="text-center mb-6">
+      <h1 class="text-2xl font-bold text-blue-700">LOGIN</h1>
+      <p class="text-gray-500 text-sm">
+        only admin
+      </p>
+    </div>
+
+    <!-- FORM -->
+    <form class="space-y-4">
+
+      <!-- USERNAME -->
+      <div>
+        <label class="block text-sm font-semibold mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          placeholder="Masukkan username"
+          class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+        >
+      </div>
+
+      <!-- PASSWORD -->
+      <div>
+        <label class="block text-sm font-semibold mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          placeholder="Masukkan password"
+          class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+        >
+      </div>
+
+      <!-- REMEMBER -->
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="accent-blue-600">
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="text-blue-600 hover:underline">
+          Lupa password?
+        </a>
+      </div>
+
+      <!-- BUTTON -->
+      <button
+        type="submit"
+        class="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-800 transition"
+      >
+        Login
+      </button>
+
+    </form>
+
+  </div>
+
+</body>
+</html>

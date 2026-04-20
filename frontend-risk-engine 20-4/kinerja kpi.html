@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kinerja KPI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white text-xs">
+
+<div class="flex min-h-screen">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="w-56 bg-[#3B6596] text-white flex flex-col items-center py-6 space-y-4">
+    <a href="monitoring.html" class="hover:underline">Return</a>
+    <a href="realisasi treatment.html" class="hover:underline">Realisasi Treatment</a>
+    <a href="kinerja kpi.html" class="hover:underline font-semibold">Kinerja KPI</a>
+    <a href="status risiko.html" class="hover:underline">Status Risiko</a>
+    <a href="peta risiko ongoing.html" class="hover:underline">Peta Risiko Ongoing</a>
+    <a href="status penanganan.html" class="hover:underline">Status Penanganan</a>
+  </aside>
+
+  <!-- ================= CONTENT ================= -->
+  <main class="flex-1 p-4 overflow-x-auto">
+
+    <!-- HEADER -->
+    <div class="mb-4">
+      <p class="text-blue-700 font-bold text-sm">
+        PT BIO FARMA (Persero) TBK
+      </p>
+      <h1 class="font-bold text-base">
+        KINERJA KEY PERFORMANCE INDICATOR
+      </h1>
+    </div>
+
+    <!-- TABLE -->
+    <table class="border-collapse border border-black w-max min-w-full">
+
+      <!-- HEADER -->
+      <thead class="bg-gray-200 text-center">
+        <tr>
+          <th rowspan="2" class="border px-2">NO</th>
+          <th colspan="5" class="border px-2">KEY PERFORMANCE INDICATOR (KPI)</th>
+
+          <script>
+            const months = [
+              "JANUARI","FEBRUARI","MARET","APRIL","MEI","JUNI",
+              "JULI","AGUSTUS","SEPTEMBER","OKTOBER","NOVEMBER","DESEMBER"
+            ];
+            months.forEach(m=>{
+              document.write(`<th colspan="3" class="border px-2">${m}</th>`);
+            });
+          </script>
+        </tr>
+
+        <tr>
+          <th class="border px-2">UKURAN</th>
+          <th class="border px-2">SATUAN</th>
+          <th class="border px-2">TARGET<br>PER TAHUN</th>
+          <th class="border px-2">BASELINE<br>PER TAHUN</th>
+          <th class="border px-2">TARGET<br>PER BULAN</th>
+
+          <script>
+            for(let i=0;i<12;i++){
+              document.write(`
+                <th class="border px-2">Target</th>
+                <th class="border px-2">Realisasi</th>
+                <th class="border px-2">Hasil</th>
+              `);
+            }
+          </script>
+        </tr>
+      </thead>
+
+      <!-- BODY -->
+      <tbody>
+        <script>
+          for(let r=1;r<=15;r++){
+            document.write(`<tr class="h-8">`);
+
+            document.write(`<td class="border text-center">${r}</td>`);
+            document.write(`<td class="border p-1" contenteditable></td>`);
+
+            document.write(`
+              <td class="border p-1">
+                <select class="w-full">
+                  <option></option>
+                  <option>Presentase</option>
+                  <option>Rupiah</option>
+                  <option>Banyaknya</option>
+                  <option>Area</option>
+                  <option>Index</option>
+                  <option>Lainnya</option>
+                </select>
+              </td>
+            `);
+
+            document.write(`<td class="border p-1" contenteditable></td>`);
+            document.write(`<td class="border p-1" contenteditable></td>`);
+
+            document.write(`
+              <td class="border p-1">
+                <select class="w-full">
+                  <option></option>
+                  <option>Min per-bulan</option>
+                  <option>Max per-bulan</option>
+                  <option>Min tetap per-bulan</option>
+                  <option>Max tetap per-bulan</option>
+                </select>
+              </td>
+            `);
+
+            for(let b=0;b<12;b++){
+              document.write(`<td class="border text-center">-</td>`);
+              document.write(`<td class="border p-1 text-right" contenteditable></td>`);
+              document.write(`<td class="border text-center">-</td>`);
+            }
+
+            document.write(`</tr>`);
+          }
+        </script>
+      </tbody>
+    </table>
+
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Laporan Manajemen Risiko</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- STYLE KHUSUS CETAK -->
+  <style>
+    @page {
+      size: A4;
+      margin: 2.5cm;
+    }
+    body {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-300 flex justify-center py-10 text-[11px]">
+
+  <!-- ===== KERTAS ===== -->
+  <div class="bg-white w-[210mm] min-h-[297mm] p-10 text-black">
+
+    <!-- HEADER -->
+    <div class="text-center mb-8">
+      <p class="font-bold text-blue-700 uppercase">
+        PT BIO FARMA (Persero) TBK
+      </p>
+      <p class="mt-6 font-bold uppercase">
+        LAPORAN
+      </p>
+      <p class="mt-2 font-bold text-lg uppercase">
+        MANAJEMEN RISIKO
+      </p>
+    </div>
+
+    <!-- INFORMASI -->
+    <div class="mb-12">
+      <table class="text-left">
+        <tr>
+          <td class="pr-2">Departemen</td>
+          <td>: Bagian Pemasaran</td>
+        </tr>
+        <tr>
+          <td>Periode Risiko</td>
+          <td>: 2026 &nbsp;&nbsp;&nbsp; 1 Jan s/d 31 Des</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- EXECUTIVE SUMMARY -->
+    <div class="mb-4">
+      <p class="font-bold text-center mb-4">
+        Executive Summary
+      </p>
+
+      <p class="text-justify mb-3">
+        Dari hasil asesmen risiko di <b>Bagian Pemasaran</b> teridentifikasi
+        <b>2 risiko penting</b>. Risiko-risiko ini memiliki potensi kerugian
+        sebesar <b>Rp230.000.000</b> dengan rata-rata kemungkinan terjadi
+        <b>23%</b> yang berlaku selama periode risiko satu tahun yang berakhir
+        <b>31 Des ###</b>.
+      </p>
+
+      <p class="text-justify mb-3">
+        Ada beberapa rekomendasi yang diberikan untuk mencegah dan memitigasi
+        risiko-risiko tersebut yang diberikan pada Risk Register. Sedangkan
+        gambaran tentang risiko-risiko tersebut sebelum dan setelah penanganan
+        dapat dilihat pada Peta Risiko.
+      </p>
+
+      <p class="text-justify">
+        Apabila rekomendasi pengendalian risiko ini dijalankan, estimasi potensi
+        kerugian akan berkurang menjadi <b>Rp45.000.000</b> dengan rata-rata
+        kemungkinan sebesar <b>13%</b>, sementara dana yang dibutuhkan untuk
+        pengendalian risiko ini diperkirakan sebesar
+        <b>Rp15.000.000</b>.
+      </p>
+    </div>
+
+     <!-- RETURN -->
+  <div class="mt-10 text-right print:hidden">
+    <a href="laporan.html"
+      class="inline-block px-6 py-1 border bg-gray-100 hover:bg-gray-200">
+      Return
+    </a>
+  </div>
+
+  </div>
+
+</body>
+</html>

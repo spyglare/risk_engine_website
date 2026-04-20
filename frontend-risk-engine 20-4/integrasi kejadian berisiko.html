@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Integrasi Kejadian Berisiko</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-200 text-sm">
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <div class="w-64 bg-blue-800 text-white flex flex-col p-6 space-y-5">
+
+    <a href="index.html" class="hover:underline">Home</a>
+    <a href="integrasi kejadian berisiko.html" class="hover:underline">Integrasi Kejadian Berisiko</a>
+    <a href="integrasi perlakukan risiko.html" class="hover:underline">Integrasi Perlakuan Risiko</a>
+    <a href="integrasi kej berisiko ongoing.html" class="hover:underline">Integrasi Kejadian Ongoing</a>
+    <a href="integrasi group regulator.html" class="hover:underline">Integrasi Group/Regulator</a>
+
+  </div>
+
+  <!-- CONTENT -->
+  <div class="flex-1 p-8">
+
+    <!-- HEADER -->
+    <div class="mb-6">
+
+      <h2 class="text-blue-700 font-semibold">
+        PT BIO FARMA (Persero) TBK
+      </h2>
+
+      <h1 class="text-xl font-bold text-center mt-2">
+        Integrasi Kejadian Berisiko
+      </h1>
+
+      <div class="flex justify-between mt-4 text-sm">
+
+        <div>
+          <p><b>SATUAN KERJA :</b> Bagian Pemasaran</p>
+          <p><b>PERIODE RISIKO :</b> 2026</p>
+        </div>
+
+        <div>
+          <p><b>RATA-RATA PROB :</b> 23%</p>
+          <p><b>POTENSI KERUGIAN :</b> Rp230,000,000</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="overflow-x-auto border border-gray-400">
+
+      <table class="w-full border-collapse text-xs">
+
+        <!-- HEADER -->
+        <thead class="bg-gray-300 text-center">
+
+          <tr>
+            <th rowspan="2" class="border p-2">Nomor Risiko</th>
+            <th rowspan="2" class="border p-2">RISIKO</th>
+
+            <th colspan="2" class="border p-2">
+              Risiko SEBELUM Penanganan
+            </th>
+
+            <th colspan="2" class="border p-2">
+              Risiko SETELAH Penanganan (Residual)
+            </th>
+          </tr>
+
+          <tr>
+            <th class="border p-2">Prob.</th>
+            <th class="border p-2">Dampak</th>
+
+            <th class="border p-2">Prob.</th>
+            <th class="border p-2">Dampak</th>
+          </tr>
+
+        </thead>
+
+        <!-- BODY -->
+        <tbody class="bg-white">
+
+          <!-- ROW 1 -->
+          <tr>
+            <td class="border p-1">
+              <input type="text" value="101001" class="w-full outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text"
+                value="Produk baru tidak diminati pembeli."
+                class="w-full outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text" value="22%" class="w-full text-center outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text" value="Rp200,000,000" class="w-full text-right outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text" value="11%" class="w-full text-center outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text" value="Rp15,000,000" class="w-full text-right outline-none">
+            </td>
+          </tr>
+
+          <!-- ROW 2 -->
+          <tr>
+            <td class="border p-1">
+              <input type="text" value="301002" class="w-full outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text"
+                value="Pameran sepi pengunjung."
+                class="w-full outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text" value="28%" class="w-full text-center outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text" value="Rp30,000,000" class="w-full text-right outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text" value="14%" class="w-full text-center outline-none">
+            </td>
+
+            <td class="border p-1">
+              <input type="text" value="Rp30,000,000" class="w-full text-right outline-none">
+            </td>
+          </tr>
+
+          <!-- EMPTY ROWS -->
+          <!-- supaya mirip excel -->
+          <tr class="h-10">
+            <td class="border"></td><td class="border"></td>
+            <td class="border"></td><td class="border"></td>
+            <td class="border"></td><td class="border"></td>
+          </tr>
+
+          <tr class="h-10">
+            <td class="border"></td><td class="border"></td>
+            <td class="border"></td><td class="border"></td>
+            <td class="border"></td><td class="border"></td>
+          </tr>
+
+          <tr class="h-10">
+            <td class="border"></td><td class="border"></td>
+            <td class="border"></td><td class="border"></td>
+            <td class="border"></td><td class="border"></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

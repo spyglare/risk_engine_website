@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Asesmen Risiko</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white text-xs">
+
+<div class="flex">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 bg-blue-800 text-white min-h-screen p-6 text-sm">
+    <nav class="flex flex-col space-y-6">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="#" class="font-bold underline">Asesmen Risiko</a>
+      <a href="#" class="hover:underline">Perlakuan Risiko</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-6 overflow-x-auto">
+
+    <!-- HEADER -->
+    <div class="flex justify-between mb-4">
+      <div>
+        <p class="text-blue-600 font-bold">PT BIO FARMA (Persero) TBK</p>
+        <h1 class="text-xl font-bold">ASESMEN RISIKO</h1>
+      </div>
+
+      <div class="flex-1 flex justify-center">
+        <table class="text-sm text-center">
+          <tr><td class="pr-2">SATUAN KERJA</td><td>: Bagian Pemasaran</td></tr>
+          <tr><td>PERIODE RISIKO</td><td>: 2026</td></tr>
+          <tr><td>ANGGARAN</td><td>: Rp2,400,000,000</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- TABEL ASESMENT -->
+    <table id="asesmenTable" class="border-collapse border border-black w-full">
+      <thead class="bg-gray-200 text-center">
+        <tr>
+          <th rowspan="2" class="border">No</th>
+          <th rowspan="2" class="border">KPI (SASARAN)</th>
+          <th rowspan="2" class="border">PROSES BISNIS</th>
+          <th rowspan="2" class="border">RISIKO</th>
+          <th colspan="2" class="border">AKIBAT</th>
+          <th rowspan="2" class="border">AKTIVITAS</th>
+          <th colspan="3" class="border">DATA KERUGIAN</th>
+          <th colspan="2" class="border">STATUS</th>
+          <th rowspan="2" class="border">Aksi</th>
+        </tr>
+        <tr>
+          <th class="border">Satuan</th>
+          <th class="border">Bentuk</th>
+          <th class="border">Estimasi</th>
+          <th class="border">Rate</th>
+          <th class="border">Estimasi 10 th</th>
+          <th class="border">Prob.</th>
+          <th class="border">Dampak</th>
+        </tr>
+      </thead>
+
+      <tbody id="asesmenBody"></tbody>
+    </table>
+
+    <div class="flex space-x-3 mt-4">
+      <button onclick="addRowAsesmen()"
+        class="px-4 py-2 bg-blue-700 text-white font-bold rounded hover:bg-blue-800 shadow">
+        + Add Baris
+      </button>
+
+      <button onclick="simpanKeDatabase()"
+        class="px-4 py-2 bg-green-600 text-white font-bold rounded hover:bg-green-700 shadow flex items-center">
+        💾 Simpan ke Database
+      </button>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Variabel global untuk menampung data dari database
+let opsiKPI = [];
+let opsiAktivitas = [];
+
+function optionList(data) {
+  return '<option></option>' + data.map(v => `<option>${v}</option>`).join('');
+}
+
+function addRowAsesmen() {
+  const tbody = document.getElementById('asesmenBody');
+  const rowCount = tbody.children.length + 1;
+
+  const tr = document.createElement('tr');
+  tr.className = 'h-28 align-top';
+
+  tr.innerHTML = `
+    <td class="border text-center">${rowCount}</td>
+
+    <td class="border p-1">
+      <select class="w-full">${optionList(opsiKPI)}</select>
+    </td>
+
+    <td class="border p-1">
+      <select class="w-full">${optionList(opsiAktivitas)}</select>
+    </td>
+
+    <td class="border p-2" contenteditable></td>
+
+    <td class="border p-1">
+      <select class="w-full">
+        <option>Rp</option>
+        <option>Kuantitas</option>
+        <option>Waktu</option>
+        <option>Area</option>
+      </select>
+    </td>
+
+    <td class="border p-2" contenteditable></td>
+
+    <td class="border p-2" contenteditable>-</td>
+
+    <td class="border p-2" contenteditable></td>
+    <td class="border p-2" contenteditable></td>
+    <td class="border p-2" contenteditable></td>
+    <td class="border p-2" contenteditable></td>
+    <td class="border p-2" contenteditable></td>
+
+    <td class="border text-center">
+      <button onclick="this.closest('tr').remove(); updateNo();"
+        class="text-red-600 font-bold">✕</button>
+    </td>
+  `;
+
+  tbody.appendChild(tr);
+}
+
+function updateNo() {
+  document.querySelectorAll('#asesmenBody tr').forEach((tr, i) => {
+    tr.children[0].innerText = i + 1;
+  });
+}
+
+// buat 1 baris awal
+addRowAsesmen();
+// --- FUNGSI BARU UNTUK MENGIRIM DATA KE BACKEND ---
+async function simpanKeDatabase() {
+
+  // 1. Ambil semua baris yang ada di tabel asesmen
+  const barisTabel = document.querySelectorAll('#asesmenBody tr');
+  let jumlahBerhasil = 0;
+
+  // Ubah tombol jadi teks loading biar keren
+  const btnSimpan = event.currentTarget;
+  const teksAsli = btnSimpan.innerHTML;
+  btnSimpan.innerHTML = "⏳ Menyimpan...";
+
+  // 2. Cek satu per satu barisnya
+  for (let i = 0; i < barisTabel.length; i++) {
+    const kolom = barisTabel[i].querySelectorAll('td');
+
+    // Kita ambil data dari kolom tabel (dihitung dari 0)
+    // Kolom 3 = RISIKO, Kolom 10 = Probabilitas, Kolom 11 = Dampak
+const kejadian_berisiko = kolom[3].innerText.trim();
+    const akibat = kolom[5].innerText.trim(); // <--- BARU (Ambil teks Akibat dari kolom ke-6)
+    const probabilitas_awal = kolom[10].innerText.trim();
+    const dampak_awal = kolom[11].innerText.trim();
+
+    if (kejadian_berisiko === "") continue;
+
+    const nomor_risiko = "RSK-" + Math.floor(Math.random() * 10000);
+
+    const dataDikirim = {
+      nomor_risiko: nomor_risiko,
+      kejadian_berisiko: kejadian_berisiko,
+      akibat: akibat, // <--- BARU (Masukkan Akibat ke paket kurir)
+      probabilitas_awal: parseFloat(probabilitas_awal.replace(/[^0-9.]/g, '')) || 0,
+      dampak_awal: parseFloat(dampak_awal.replace(/[^0-9]/g, '')) || 0
+    };
+
+    try {
+      // 4. Kurir mengantar paket ke Dapur (Backend Port 5000)
+      const respon = await fetch('http://localhost:5000/api/risiko', {
+        method: 'POST', // POST = Minta Dapur mencatat data baru
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataDikirim)
+      });
+
+      if (respon.ok) jumlahBerhasil++;
+    } catch (err) {
+      console.error("Gagal kirim baris ke-" + (i+1), err);
+    }
+  }
+
+  // Kembalikan tombol seperti semula
+  btnSimpan.innerHTML = teksAsli;
+
+  // Beri laporan ke User
+  if (jumlahBerhasil > 0) {
+    alert(`🎉 Mantap! ${jumlahBerhasil} Data Risiko berhasil disimpan ke Database!`);
+    // Kosongkan tabel lalu buat 1 baris baru lagi
+    document.getElementById('asesmenBody').innerHTML = '';
+    addRowAsesmen();
+  } else {
+    alert("⚠️ Tidak ada data yang disimpan. Pastikan kolom RISIKO sudah diketik ya!");
+  }
+}
+
+// --- MESIN PENYEDOT DATA DARI MASTER KPI ---
+async function muatDropdownDariDatabase() {
+  try {
+    const respon = await fetch('http://localhost:5000/api/master-kpi');
+    const dataDariGudang = await respon.json();
+
+    // Reset variabel
+    opsiKPI = [];
+    opsiAktivitas = [];
+
+    // Pisah-pisahkan data yang masuk
+    dataDariGudang.forEach(item => {
+      // Masukkan nama KPI ke daftar (jika belum ada agar tidak ganda)
+      if (!opsiKPI.includes(item.nama_kpi)) {
+        opsiKPI.push(item.nama_kpi);
+      }
+
+      // Potong-potong aktivitas dan masukkan ke daftar
+      if (item.aktivitas_kpi) {
+        const potonganAktivitas = item.aktivitas_kpi.split(' | ');
+        potonganAktivitas.forEach(act => {
+          if (act.trim() !== "" && !opsiAktivitas.includes(act.trim())) {
+            opsiAktivitas.push(act.trim());
+          }
+        });
+      }
+    });
+
+    // Setelah data tersedot, baru kita cetak baris pertamanya agar dropdown-nya terisi
+    document.getElementById('asesmenBody').innerHTML = ''; // bersihkan tabel
+    addRowAsesmen();
+
+  } catch (error) {
+    console.error("Gagal menarik data Master KPI:", error);
+    // Kalau gagal, cetak baris kosong saja
+    addRowAsesmen();
+  }
+}
+
+// Jalankan mesin penyedot begitu halaman Asesmen dibuka
+muatDropdownDariDatabase();
+
+</script>
+
+</body>
+</html>

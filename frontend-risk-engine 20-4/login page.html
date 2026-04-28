@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+
+  <!-- CONTAINER -->
+  <div class="w-full max-w-md bg-white rounded shadow-md p-8">
+
+    <!-- HEADER -->
+    <div class="text-center mb-6">
+      <h1 class="text-2xl font-bold text-blue-700">LOGIN</h1>
+      <p class="text-gray-500 text-sm">
+        only admin
+      </p>
+    </div>
+
+    <form id="formLogin" class="space-y-4">
+
+      <div>
+        <label class="block text-sm font-semibold mb-1">Username</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Masukkan username"
+          class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+          required
+        >
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-1">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Masukkan password"
+          class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+          required
+        >
+      </div>
+
+      <!-- REMEMBER -->
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="accent-blue-600">
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="text-blue-600 hover:underline">
+          Lupa password?
+        </a>
+      </div>
+
+      <!-- BUTTON -->
+      <button
+        type="submit"
+        class="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-800 transition"
+      >
+        Login
+      </button>
+
+    </form>
+
+  </div>
+
+  <script>
+    // Menangkap momen saat tombol Login ditekan
+    document.getElementById('formLogin').addEventListener('submit', async function(event) {
+      event.preventDefault(); // Mencegah halaman refresh otomatis
+      
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      
+      try {
+        // Mengirim username & password ke Loket D di Dapur
+        const respon = await fetch('http://localhost:5000/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: user, password: pass })
+        });
+        
+        const hasil = await respon.json();
+        
+        // Mengecek apakah Dapur membalas 'sukses'
+        if (respon.ok && hasil.status === 'sukses') {
+          alert("🎉 " + hasil.pesan + " Selamat datang, " + hasil.data.username);
+          
+          // PINDAH HALAMAN OTOMATIS
+          // Pastikan nama file ini sesuai dengan halaman yang dituju temanmu
+          window.location.href = "inisiasi.html"; 
+          
+        } else {
+          // Kalau password salah
+          alert("❌ Gagal: " + hasil.pesan);
+        }
+      } catch (error) {
+        alert("⚠️ Error: Tidak bisa terhubung ke server. Pastikan Backend menyala!");
+      }
+    });
+  </script>
+
+</body>
+</html>

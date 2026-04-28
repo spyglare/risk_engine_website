@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Inisiasi Risiko</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#f3f3f3] p-6 text-xs text-black">
+
+<!-- ================= TOLERANSI ================= -->
+<table class="mb-4">
+  <tr><td class="pr-6">Toleransi Probabilitas</td><td>20%</td></tr>
+  <tr><td>Toleransi Dampak</td><td>3.0%</td></tr>
+  <tr><td>Inflasi</td><td>2.0%</td></tr>
+</table>
+
+<a href="index.html" class="inline-block border px-6 py-1 bg-white shadow mb-4 hover:underline">
+  Home
+</a>
+
+<!-- ================= KPI ================= -->
+<table class="border-collapse w-full mb-2 bg-white kpi-table">
+  <thead class="bg-[#d9d9d9]">
+    <tr>
+      <th class="border w-10">No</th>
+      <th class="border">KPI (Key Performance Indicator)</th>
+      <th class="border">Proses Bisnis</th>
+      <th class="border w-8">✕</th>
+    </tr>
+  </thead>
+  <tbody id="kpiBody">
+    <tr>
+      <td class="border text-center">1</td>
+      <td class="border p-1" contenteditable>Meningkatkan min 10% pertumbuhan penjualan.</td>
+      <td class="border p-1" contenteditable>Membuat produk baru.</td>
+      <td class="border text-center">
+        <button onclick="hapusBaris(this)" class="text-red-600 font-bold">✕</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button onclick="addBarisKPI()" class="mb-6 px-4 py-1 bg-blue-700 text-white">
+  + Add Baris KPI
+</button>
+
+<!-- ================= KETERANGAN ================= -->
+<div class="flex justify-between mb-2">
+  <p><b>KETERANGAN:</b> Setiap unit kerja hanya melaksanakan satu <b>FUNGSI</b> yang terdiri dari maksimal 15 <b>AKTIVITAS</b>.</p>
+  <p><b>KETERANGAN:</b> Belum diketahui ada berapa <b>RISIKO</b> dan risiko tsb masuk <b>KATEGORI</b> yang mana.</p>
+</div>
+
+<!-- ================= TABEL UTAMA ================= -->
+<div class="flex gap-2">
+
+<!-- ====== KIRI ====== -->
+<table class="border-collapse bg-white kategori-table w-[65%]">
+  <thead class="bg-[#d9d9d9]">
+    <tr>
+      <th class="border">FUNGSI</th>
+      <th class="border">KATEGORISASI RISIKO<br>NOMOR</th>
+      <th class="border">AKTIVITAS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="border">Public Relation</td><td class="border">100000</td><td class="border">Publisitas</td></tr>
+    <tr><td class="border">Hukum</td><td class="border">200000</td><td class="border">Pembuatan Kontrak</td></tr>
+    <tr><td class="border">Pemasaran</td><td class="border">301000</td><td class="border">Penjualan</td></tr>
+    <tr><td class="border">Pemasaran</td><td class="border">302000</td><td class="border">Promosi</td></tr>
+    <tr><td class="border">Pemasaran</td><td class="border">303000</td><td class="border">Pengembangan Produk</td></tr>
+    <tr><td class="border">Produksi</td><td class="border">401000</td><td class="border">Pembelian</td></tr>
+    <tr><td class="border">Produksi</td><td class="border">402000</td><td class="border">Penyimpanan</td></tr>
+    <tr><td class="border">Produksi</td><td class="border">403000</td><td class="border">Pengolahan</td></tr>
+    <tr><td class="border">SDM</td><td class="border">501000</td><td class="border">Rekrutmen</td></tr>
+    <tr><td class="border">SDM</td><td class="border">502000</td><td class="border">Pengembangan SDM</td></tr>
+    <tr><td class="border">Keuangan</td><td class="border">601000</td><td class="border">Pendanaan</td></tr>
+    <tr><td class="border">Keuangan</td><td class="border">602000</td><td class="border">Pengelolaan Modal Kerja</td></tr>
+  </tbody>
+</table>
+
+<!-- ====== KANAN ====== -->
+<table class="border-collapse bg-white w-[35%]">
+  <thead class="bg-[#d9d9d9]">
+    <tr>
+      <th class="border">RISIKO (T1)</th>
+      <th class="border">KATEGORI GROUP / REGULATOR (T2)</th>
+      <th class="border">TEMA (T3)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="border h-6" contenteditable></td><td class="border" contenteditable></td><td class="border" contenteditable></td></tr>
+    <tr><td class="border h-6" contenteditable></td><td class="border" contenteditable></td><td class="border" contenteditable></td></tr>
+    <tr><td class="border h-6" contenteditable></td><td class="border" contenteditable></td><td class="border" contenteditable></td></tr>
+    <tr><td class="border h-6" contenteditable></td><td class="border" contenteditable></td><td class="border" contenteditable></td></tr>
+  </tbody>
+</table>
+
+</div>
+
+<!-- ================= SIMPAN ================= -->
+<button onclick="simpanInisiasi()" class="mt-6 px-6 py-1 bg-green-700 text-white">
+  Simpan Data Inisiasi
+</button>
+
+<script>
+/* ================= ADD BARIS KPI ================= */
+function addBarisKPI() {
+  const tbody = document.getElementById('kpiBody');
+  const rowCount = tbody.rows.length + 1;
+
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td class="border text-center">${rowCount}</td>
+    <td class="border p-1" contenteditable></td> <td class="border p-1" contenteditable></td> <td class="border text-center">
+      <button onclick="hapusBaris(this)" class="text-red-600 font-bold">✕</button>
+    </td>
+  `;
+  tbody.appendChild(tr);
+}
+
+/* ================= HAPUS BARIS ================= */
+function hapusBaris(btn) {
+  const row = btn.closest('tr');
+  row.remove();
+
+  // reset nomor
+  document.querySelectorAll('#kpiBody tr').forEach((tr, i) => {
+    tr.cells[0].innerText = i + 1;
+  });
+}
+
+/* ================= SIMPAN KE MASTER KPI ================= */
+async function simpanInisiasi() {
+  const dataKirim = [];
+
+  // Ambil semua data dari tabel (Nama KPI + 4 Aktivitas)
+  document.querySelectorAll('#kpiBody tr').forEach(tr => {
+    const nama = tr.cells[1]?.innerText.trim() || "";
+    
+      if (nama !== "") {
+      dataKirim.push({
+        nama_kpi: nama,
+        act1: tr.cells[2]?.innerText.trim() || "", // Kolom ke-3 (Proses Bisnis)
+        act2: "", // Paket kosong
+        act3: "", // Paket kosong
+        act4: ""  // Paket kosong
+      });
+    }
+  });
+
+  if(dataKirim.length === 0) return alert("⚠️ Tabel KPI masih kosong atau belum diisi!");
+
+  try {
+    // Tembak datanya ke Loket K (master-kpi)
+    const respon = await fetch('http://localhost:5000/api/master-kpi', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataKirim)
+    });
+
+    if(respon.ok) {
+      alert('🎉 Mantap! Data berhasil disimpan permanen ke tabel master_kpi!');
+    } else {
+      alert('❌ Gagal menyimpan ke database.');
+    }
+  } catch (error) {
+    alert('⚠️ Error server! Pastikan Dapur Backend menyala.');
+  }
+}
+
+/* ================= TARIK DATA OTOMATIS ================= */
+async function muatDataKPI() {
+  try {
+    // Tarik data dari Loket L
+    const respon = await fetch('http://localhost:5000/api/master-kpi');
+    const dataKPI = await respon.json();
+
+    const tbody = document.getElementById('kpiBody');
+
+    if(dataKPI.length > 0) {
+      tbody.innerHTML = ''; // Kosongkan baris contoh default
+    }
+
+    // Cetak data dari database ke tabel
+    dataKPI.forEach((kpi, index) => {
+      // SIHIR PEMOTONGAN: Pisahkan kembali aktivitas yang digabung pakai " | "
+      const aktivitas = kpi.aktivitas_kpi ? kpi.aktivitas_kpi.split(' | ') : ["", "", "", ""];
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td class="border text-center">${index + 1}</td>
+        <td class="border p-1" contenteditable>${kpi.nama_kpi}</td>
+        <td class="border p-1" contenteditable>${aktivitas[0] || ""}</td>
+        <td class="border text-center">
+          <button onclick="hapusBaris(this)" class="text-red-600 font-bold">✕</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  } catch (error) {
+    console.log("Belum bisa menarik data KPI dari master_kpi.");
+  }
+}
+
+// Jalankan mesin penarik data begitu halaman terbuka
+muatDataKPI();
+</script>
+
+</body>
+</html>

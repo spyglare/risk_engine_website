@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Status Penanganan</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-200 text-sm">
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <div class="w-64 bg-blue-800 text-white flex flex-col p-6 space-y-5">
+
+    <a href="monitoring.html" class="hover:underline">Return</a>
+    <a href="realisasi treatment.html" class="hover:underline">Realisasi Treatment</a>
+    <a href="kinerja kpi.html" class="hover:underline">Kinerja KPI</a>
+    <a href="status penanganan.html" class="hover:underline">Status Risiko</a>
+    <a href="peta risiko ongoing.html" class="hover:underline">Peta Risiko Ongoing</a>
+
+    <a href="status-penanganan.html" class="font-semibold underline">
+      Status Penanganan
+    </a>
+
+  </div>
+
+  <!-- CONTENT -->
+  <div class="flex-1 p-8">
+
+    <!-- HEADER -->
+    <div class="mb-6">
+      <h1 class="text-blue-900 font-bold text-xl">
+        STATUS PENANGANAN
+      </h1>
+
+      <p class="font-semibold mt-1">Bagian Pemasaran</p>
+
+      <p class="mt-2 text-sm">
+        PERIODE RISIKO &nbsp;&nbsp; 2026 &nbsp;&nbsp; 1 Jan s/d 31 Des
+      </p>
+    </div>
+
+    <!-- KETERANGAN -->
+    <div class="bg-gray-100 p-4 w-[400px] mb-6 border">
+
+      <p class="flex items-start gap-2 mb-2">
+        <span class="text-green-600 font-bold">✔</span>
+        <span>Penanganan telah dilaksanakan sesuai dengan rencana.</span>
+      </p>
+
+      <p class="flex items-start gap-2 mb-2">
+        <span class="text-red-600 font-bold">✖</span>
+        <span>
+          Penanganan sudah seharusnya selesai namun belum selesai dilaksanakan.
+        </span>
+      </p>
+
+      <p class="flex items-start gap-2">
+        <span>[ ]</span>
+        <span>Belum waktunya untuk ditangani.</span>
+      </p>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="overflow-x-auto border">
+
+      <table class="w-full border-collapse text-xs">
+
+        <!-- HEADER -->
+        <thead>
+          <tr class="bg-teal-700 text-white text-center">
+            <th class="border p-2 w-12">NO.</th>
+            <th class="border p-2 w-24">NO. RISIKO</th>
+            <th class="border p-2">PREVENT (CEGAH)</th>
+            <th class="border p-2 w-32">STATUS</th>
+          </tr>
+        </thead>
+
+        <!-- BODY -->
+        <tbody class="bg-white">
+
+          <!-- ROW 1 -->
+          <tr>
+            <td class="border p-2 text-center">1</td>
+            <td class="border p-2 text-center">101001</td>
+            <td class="border p-2">
+              Mengganti TEKNOLOGI dengan cara pengembangan produk dimana ada survey pasar.
+            </td>
+            <td class="border p-2 text-center"></td>
+          </tr>
+
+          <!-- ROW 2 -->
+          <tr>
+            <td class="border p-2 text-center">2</td>
+            <td class="border p-2 text-center">301002</td>
+            <td class="border p-2">
+              Memperbaiki ATURAN tentang mengikuti pameran.
+            </td>
+            <td class="border p-2 text-center"></td>
+          </tr>
+
+          <!-- EMPTY ROWS -->
+          <!-- biar panjang seperti excel -->
+          <tr class="h-10"><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+          <tr class="h-10"><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+          <tr class="h-10"><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+          <tr class="h-10"><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+          <tr class="h-10"><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+          <tr class="h-10"><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+          <tr class="h-10"><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
